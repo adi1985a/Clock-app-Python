@@ -2,7 +2,10 @@
 _A Python command-line application providing real-time clock display, settable alarms, and countdown timers, utilizing threading for concurrent operations and supporting command-line arguments._
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.6%2B-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.6+-blue.svg)](https://www.python.org/)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://www.python.org/downloads/)
+
+---
 <!-- No specific external libraries to badge beyond standard Python modules -->
 
 ## 📋 Table of Contents
@@ -74,114 +77,175 @@ Time until alarm: 00:24:44
 ALARM! ALARM! ALARM!
 (Press Enter to return to menu)
 ```
-**Setting a Timer via CLI:**
-Setting a Timer via CLI:
+
+## ▶️ Setting a Timer via CLI
+
+```bash
 python clock.py -timer 00:05
-Use code with caution.
-Bash
+```
+
 Conceptual output from timer:
+
+```text
 Timer started for 00:05.
 Time remaining: 00:04
 Time remaining: 00:03
 ...
 TIMER FINISHED!
-Use code with caution.
-Text
-⚙️ System Requirements
-Python Version: Python 3.6 or higher.
-Standard Python Libraries:
-time
-datetime
-argparse (for command-line argument parsing)
-threading (for concurrent operations)
-sched (for scheduling alarm events)
-(No external third-party libraries are required).
-Operating System: Any OS that supports Python 3.6+ (e.g., Windows, macOS, Linux).
-🛠️ Installation and Setup
-Clone or Download the Repository:
+```
+
+---
+
+## ⚙️ System Requirements
+
+- **Python Version**: Python 3.6 or higher.
+- **Standard Python Libraries**:
+  - `time`
+  - `datetime`
+  - `argparse` (for command-line argument parsing)
+  - `threading` (for concurrent operations)
+  - `sched` (for scheduling alarm events)
+- **Operating System**: Any OS that supports Python 3.6+ (Windows, macOS, Linux).
+- **No external dependencies required.**
+
+---
+
+## 🛠️ Installation and Setup
+
+Clone or download the repository:
+
+```bash
 git clone <repository-url>
 cd <repository-directory>
-Use code with caution.
-Bash
-(Replace <repository-url> and <repository-directory> if applicable, or simply download/save clock.py).
-Ensure Python is Installed:
-Verify you have Python 3.6 or newer installed and available in your system's PATH. You can check with python --version or python3 --version.
-No Additional Library Installation Required:
-The application relies solely on Python's standard libraries.
-Run the Application:
-Open a terminal or command prompt, navigate to the directory where you saved clock.py, and execute:
+```
+
+Ensure Python 3.6+ is installed:
+
+```bash
+python --version
+# or
+python3 --version
+```
+
+Run the application:
+
+```bash
 python clock.py
-Use code with caution.
-Bash
-or if you use python3 alias:
+# or
 python3 clock.py
-Use code with caution.
-Bash
-💡 Usage Guide (Menu & Command-Line)
-Interactive Menu Mode:
-Launch the application without any command-line arguments:
+```
+
+---
+
+## 💡 Usage Guide (Menu & Command-Line)
+
+### 📋 Interactive Menu Mode
+
+Launch without arguments:
+
+```bash
 python clock.py
-Use code with caution.
-Bash
-The main menu will be displayed:
-Show Current Time
-Set Alarm
-Exit
-Enter the number corresponding to your choice:
-Option 1 (Show Current Time): Displays the current time, updating every second. Press Enter to stop the time display and return to the main menu.
-Option 2 (Set Alarm):
-Prompts you to enter the desired alarm hour (0-23).
-Prompts you to enter the desired alarm minute (0-59).
-A countdown to the alarm will be shown. When the alarm triggers, a message (and/or beep) will occur. Press Enter to acknowledge and return to the menu.
-Option 3 (Exit): Closes the application.
-Command-Line Argument Mode:
-To set an alarm directly:
+```
+
+You will see:
+
+```
+1. Show Current Time
+2. Set Alarm
+3. Exit
+```
+
+- **Option 1 (Show Current Time)**: Displays current time (updates every second). Press Enter to stop.
+- **Option 2 (Set Alarm)**: Enter hour/minute. Countdown begins. Alarm triggers at set time.
+- **Option 3 (Exit)**: Exits application.
+
+---
+
+### ⌨️ Command-Line Argument Mode
+
+Set an alarm directly:
+
+```bash
 python clock.py -alarm
-Use code with caution.
-Bash
-This will immediately take you to the alarm setting prompts (hour and minute).
-To set a timer directly:
+```
+
+Set a timer directly:
+
+```bash
 python clock.py -timer MM:SS
-Use code with caution.
-Bash
-Replace MM:SS with the desired duration. For example, for 1 minute and 30 seconds:
+```
+
+Example for 1 minute 30 seconds:
+
+```bash
 python clock.py -timer 01:30
-Use code with caution.
-Bash
-The timer will start, display the countdown, and notify upon completion.
-After command-line initiated tasks (like alarm setup or timer completion), the behavior for returning to a menu or exiting might differ based on implementation (e.g., it might exit directly or prompt to press Enter).
-🗂️ File Structure
-clock.py: The single Python script containing all application logic, including functions/classes for time display, alarm setting, timer management, menu handling, and command-line argument parsing.
-README.md: This documentation file.
-(No external data files or log files are mentioned as being created by this application in the provided description.)
-📝 Technical Notes
-Alarm Scheduling: The alarm uses Python's sched module to schedule an event (the alarm trigger) at a future time. It correctly calculates the next occurrence if the specified alarm time has already passed for the current day.
-Timer Input Format: The timer input via command-line (-timer MM:SS) must adhere strictly to the MM:SS format. The description notes "invalid inputs may cause errors," suggesting that robust parsing and validation for this format within the script are important.
-Threading for Non-Blocking UI: The use of threading allows the current time to update continuously or an alarm countdown to proceed without freezing the main part of the application, enabling the user to, for example, press Enter to return to the menu while these are active.
-Lightweight and Portable: Requiring no external dependencies beyond standard Python makes the application easy to run on any system with a compatible Python interpreter.
-Potential Enhancements:
-Adding sound alerts for alarms and timers (e.g., using winsound on Windows, or a cross-platform library like playsound).
-More robust input validation, especially for the timer format.
-Persistent alarms (saving/loading alarm settings to/from a file).
-A more sophisticated visual display in the console (e.g., using libraries like curses on Unix-like systems, or more advanced character art).
-🤝 Contributing
-Contributions to PyTimeKeep are highly encouraged! If you have ideas for:
-Adding sound alerts for alarms/timers in a cross-platform way.
-Implementing persistent storage for alarms.
-Improving the console UI/UX.
-Adding more time-related features (e.g., stopwatch, world clock).
-Refactoring for better code organization if the script grows complex.
-Fork the repository.
-Create a new branch for your feature (git checkout -b feature/SoundAlerts).
-Make your changes to clock.py.
-Commit your changes (git commit -m 'Feature: Add cross-platform sound alerts').
-Push to the branch (git push origin feature/SoundAlerts).
-Open a Pull Request.
-Please ensure your code is well-commented and follows Python best practices (e.g., PEP 8), including type hints where appropriate.
-📃 License
-This project is licensed under the MIT License.
-(If you have a LICENSE file in your repository, refer to it: See the LICENSE file for details.)
-📧 Contact
-Application concept by Adrian Lesniak.
-For questions or feedback, please open an issue on the GitHub repository or contact the repository owner.
-🔧 Your reliable Python companion for managing time, alarms, and countdowns from the command line!
+```
+
+The timer will countdown and notify on completion.
+
+---
+
+## 🗂️ File Structure
+
+```bash
+├── clock.py       # Main Python script with all features
+├── README.md      # Project documentation
+```
+
+No external data or log files are used.
+
+---
+
+## 📝 Technical Notes
+
+- **Alarm Scheduling**: Uses `sched` to trigger alarms at specified future times, even if the time has passed (moves to next occurrence).
+- **Timer Format**: Must be in MM:SS format. Invalid input may crash.
+- **Threading**: Enables non-blocking updates during alarms/timers.
+- **Portable**: Requires only standard Python libraries.
+
+---
+
+### 🔧 Potential Enhancements
+
+- Add cross-platform sound alerts (`winsound`, `playsound`)
+- Validate timer input format robustly
+- Add persistent alarms (saved to a file)
+- Enhance UI (e.g., with `curses` or ASCII art)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! To contribute:
+
+```bash
+# Fork and clone the repository
+git checkout -b feature/YourFeature
+# Make changes to clock.py
+git commit -m "Feature: Add your feature"
+git push origin feature/YourFeature
+```
+
+Open a Pull Request. Please ensure:
+
+- Code is clean, readable, and PEP8-compliant
+- Use type hints where appropriate
+- Comment your code where necessary
+
+---
+
+## 📃 License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📧 Contact
+
+Application concept by **Adrian Lesniak**.  
+For questions or suggestions, open an issue on GitHub or contact the repository maintainer.
+
+---
+
+> 🔧 Your reliable Python companion for managing time, alarms, and countdowns from the command line!
